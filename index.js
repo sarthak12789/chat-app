@@ -18,15 +18,18 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
   console.log("User connected:", socket.id);
 
-  socket.on("send_message", (data) => {
-    io.emit("receive_message", data); // send to all
-  });
+socket.on("send_message", (data) => {
+  socket.broadcast.emit("receive_message", data);
+});
+
 
   socket.on("disconnect", () => {
     console.log("User disconnected:", socket.id);
   });
 });
 
-server.listen(3000, () => {
-  console.log("Server running on port 3000");
+const PORT = process.env.PORT || 3000;
+
+server.listen(PORT, () => {
+  console.log("Server running on port", PORT);
 });
