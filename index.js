@@ -5,7 +5,7 @@ import cors from "cors";
 
 const app = express();
 app.use(cors({
- origin: "*", // later put your Vercel URL
+ origin: "https://video-calling-beige.vercel.app/", 
   methods: ["GET", "POST"],
 }));
 
@@ -13,7 +13,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "*", // later put your Vercel URL
+    origin: "https://video-calling-beige.vercel.app/", 
     methods: ["GET", "POST"],
   },
 });
